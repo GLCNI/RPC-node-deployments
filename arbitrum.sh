@@ -11,26 +11,27 @@ sudo apt install curl -y
 # INSTALL DOCKER 
 # Check if Docker is already installed
 echo "checking if Docker is installed on the system..."
-sleep 3
+sleep 5
 if command -v docker &> /dev/null
 then
     echo "Docker is already installed"
 else
     # Install Docker
+    echo "installing Docker and Docker Compose..."
+    sleep 3
     sudo apt-get remove docker docker-engine docker.io containerd runc
     curl -fsSL https://get.docker.com -o get-docker.sh
     sh get-docker.sh
     sudo rm -r get-docker.sh 
-    sudo usermod -aG docker $USER
-    newgrp docker
+    sudo usermod -aG docker $USER && newgrp docker
     echo "Docker is now installed"
 fi
 
 # Check Docker version
 docker_version=$(docker --version | awk '{print $3}')
-docker_compose_version=$(docker compose version | awk '{print $3}')
+docker_compose_version=$(docker compose version | awk '{print $4}')
 echo "You are running Docker version $docker_version and Docker Compose version $docker_compose_version"
-sleep 3
+sleep 5
 
 # DEFINE L1 URL PORT
 # Default 8545 or custom port or sub-domain not needed to specify
@@ -75,8 +76,8 @@ then
 fi
 
 # create directories for nitro-node
-mkdir -p /$HOMEDIR/arbitrum-node/data
-chmod -fR 777 /$HOMEDIR/arbitrum-node/data
+mkdir -p $HOMEDIR/arbitrum-node/data
+chmod -fR 777 $HOMEDIR/arbitrum-node/data
 cd arbitrum-node
 
 # create docker-compose.yml file 
@@ -90,7 +91,7 @@ services:
         restart: always
         stop_grace_period: 30s
         volumes:
-            - '/$HOMEDIR/arbitrum-node/data/:/home/user/.arbitrum'	
+            - '$HOMEDIR/arbitrum-node/data/:/home/user/.arbitrum'
         ports:
             - '0.0.0.0:8547:8547'
             - '0.0.0.0:8548:8548'
@@ -98,9 +99,9 @@ services:
         - --init.url=https://snapshot.arbitrum.io/mainnet/nitro.tar
         - --l1.url=$RPC_URL
         - --l2.chain-id=42161 
-        - --http.api=net,web3,eth,debug 	
-        - --http.corsdomain=* 
-        - --http.addr=0.0.0.0 
+        - --http.api=net,web3,eth,debug
+        - --http.corsdomain=*
+        - --http.addr=0.0.0.0
         - --http.vhosts=*
         logging:
           driver: json-file
