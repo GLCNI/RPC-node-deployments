@@ -1,0 +1,35 @@
+  consensus:
+    hostname: consensus 
+    container_name: consensus
+    image: sigp/lighthouse:latest-modern
+    restart: always
+    stop_grace_period: 5m
+    command: |
+      lighthouse beacon_node
+      --network=$ETH_NETWORK
+      --datadir=/data
+      --discovery-port=12000
+      --port=13000
+      --execution-endpoint=http://execution:$ETH_NODE_RPC_PORT
+      --execution-jwt=/jwtsecret/jwtsecret.hex
+      --http
+      --http-address=0.0.0.0
+      --enr-udp-port=12000
+      --target-peers=80
+      --debug-level=info
+      --slasher
+      --slasher-dir=/data/slasher_db
+      --slasher-max-db-size=100
+      --suggested-fee-recipient=$FEE_RECIPIENT
+    ports:
+      - "12000:12000/udp" #p2p
+      - "13000:13000/tcp" #p2p
+    volumes:
+      - $HOMEDIR/eth-node/cl-client:/data
+      - $HOMEDIR/eth-node/jwtsecret:/jwtsecret
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    logging:
+      driver: "local"
+    networks:
+      net:
