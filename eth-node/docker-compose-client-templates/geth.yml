@@ -1,0 +1,33 @@
+  execution:
+    user: 1000:1000
+    container_name: execution
+    image: ethereum/client-go:stable
+    restart: always
+    stop_grace_period: 1m
+    command: |
+      --network=$ETH_NETWORK # incorrect flag
+      --http
+      --http.addr=0.0.0.0
+      --http.port=$ETH_NODE_RPC_PORT
+      --http.api=eth,net,web3
+      --http.vhosts=*
+      --allow-insecure-unlock
+      --ws
+      --ws.addr=0.0.0.0
+      --ws.port=8546
+      --ws.api=eth,net,web3
+    ports:
+      - "$EL_P2P_PORT:$EL_P2P_PORT/tcp" # p2p
+      - "$EL_P2P_PORT:$EL_P2P_PORT/udp" # p2p
+#      - "127.0.0.1:$ETH_NODE_RPC_PORT:$ETH_NODE_RPC_PORT" # http RPC port
+#      - "127.0.0.1:8546:8546" # websocket port
+#      - "127.0.0.1:8551:8551" # engine RPC port
+    volumes:
+      - $HOMEDIR/eth-node/jwtsecret:/jwtsecret
+      - $HOMEDIR/eth-node/el-client:/root/.ethereum
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    logging:
+      driver: "local"
+    networks:
+      net:
