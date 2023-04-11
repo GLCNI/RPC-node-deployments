@@ -21,13 +21,15 @@
       --suggested-fee-recipient=$FEE_RECIPIENT
       --tcp-port=13000
       --udp-port=12000
+    env_file:
+      - $HOME/.bash_profile
     ports:
       - "12001:12000/udp" # p2p
       - "13001:13000" # p2p
 #      - "127.0.0.1:5052:5052" # rest api
     volumes:
-      - $HOMEDIR/eth-node/cl-client:/data
-      - $HOMEDIR/eth-node/jwtsecret:/jwtsecret
+      - $ETH_HOMEDIR/eth-node/cl-client:/data
+      - $ETH_HOMEDIR/eth-node/jwtsecret:/jwtsecret
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     logging:
