@@ -21,12 +21,14 @@
       --slasher-dir=/data/slasher_db
       --slasher-max-db-size=100
       --suggested-fee-recipient=$FEE_RECIPIENT
+    env_file:
+      - $HOME/.bash_profile  
     ports:
       - "12000:12000/udp" #p2p
       - "13000:13000/tcp" #p2p
     volumes:
-      - $HOMEDIR/eth-node/cl-client:/data
-      - $HOMEDIR/eth-node/jwtsecret:/jwtsecret
+      - $ETH_HOMEDIR/eth-node/cl-client:/data
+      - $ETH_HOMEDIR/eth-node/jwtsecret:/jwtsecret
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     logging:
