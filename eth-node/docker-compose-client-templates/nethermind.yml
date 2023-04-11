@@ -20,15 +20,21 @@
       --Network.P2PPort=$EL_P2P_PORT
       --Pruning.CacheMb=2048
       --HealthChecks.Enabled=false
+    env_file:
+      - $HOME/.bash_profile
     ports:
       - "$EL_P2P_PORT:$EL_P2P_PORT/tcp" # p2p
       - "$EL_P2P_PORT:$EL_P2P_PORT/udp" # p2p
 #      - "127.0.0.1:$ETH_NODE_RPC_PORT:$ETH_NODE_RPC_PORT" # http RPC port
 #      - "127.0.0.1:8546:8546" # websocket port
 #      - "127.0.0.1:8551:8551" # engine RPC port
+    expose:
+      - $ETH_NODE_RPC_PORT
+      - 8546
+      - 8551
     volumes:
-      - $HOMEDIR/eth-node/jwtsecret:/jwtsecret
-      - $HOMEDIR/eth-node/el-client:/data
+      - $ETH_HOMEDIR/eth-node/jwtsecret:/jwtsecret
+      - $ETH_HOMEDIR/eth-node/el-client:/data
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     logging:
