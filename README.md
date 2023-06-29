@@ -11,11 +11,11 @@ additional info found in /additional for information on other setup consideratio
 
 Full node for Ethereum network
 
-Hardware requirements 
-Minimum: Storage 2TB SSD / 8GB RAM / 4vCPU
+Hardware requirements\ 
+Minimum: Storage 2TB SSD / 8GB RAM / 4vCPU\
 Recommended: Storage 4TB SSD / 16GB RAM / 4vCPU
 
-## Node deployment tools: 
+### Node deployment tools: 
 
 There are several tools to handle the Full setup, including installing dependencies, configuring clients with selection to get to a working state, allows configuration after setup. 
 
