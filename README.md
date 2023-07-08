@@ -151,6 +151,14 @@ Run Setup:
 ./osmo.sh
 ```
 
+## Juno 
+Juno network node setup with cosmovisor to manage chain upgrades, setup as a system service. 
+
+**Manual Setup:** https://mirror.xyz/0xf3bF9DDbA413825E5DdF92D15b09C2AbD8d190dd/U4aUf8jjYvO7QKEjwyXC_ndpeSGCZWFnrR3q48-Yh7w
+
+**Install Script:**
+PENDING
+
 ---------------
 
 # Gnosischain 
