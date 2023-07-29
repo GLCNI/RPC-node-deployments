@@ -171,4 +171,23 @@ See Ethereum - Node deployment tools > Nethermind Sedge
 Follow on screen prompts: Select network: Gnosis > Select Node Type: Full Node > Generation path: Default > Set up validator: No > Expose all ports: Yes 
 
 # Avalanche 
-PENDING
+
+**Install script:**
+Script made by ava-labs docs [here](https://docs.avax.network/nodes/build/set-up-node-with-installer) 
+Creates a system service `avalanchego` to run and manage node
+
+Download and run script
+```
+wget -nd -m https://raw.githubusercontent.com/ava-labs/avalanche-docs/master/scripts/avalanchego-installer.sh
+chmod 755 avalanchego-installer.sh
+./avalanchego-installer.sh
+```
+
+Interactive Prompts
+	Select Dynamic IP `1` or Static IP `2`
+	Select Expose Ports `private` or `public`: select `public` to expose the RPC port to all network interfaces.
+	Select turn state sync on
+
+Additional Options: 
+To set custom db path, add flag to the run script command: `--db-dir /path/to/data`
+
