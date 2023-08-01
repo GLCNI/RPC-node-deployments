@@ -55,42 +55,71 @@ fi
 #####################################################################################################################
 # 3. ENTER L1 URL, localhost or custom endpoint 
 #####################################################################################################################
-# SET L1 RPC PORT 
 echo "StarkNet Node requires a connection to an L1 Endpoint- Ethereum Full Node"
 echo "This can be hosted locally or an external service such as infura/alchemy"
-echo "Is the rpc Port from L1 endpoint default (8545) or has it been changed (custom), NOTE: If using Sedge the port is (8547)" 
-echo -n "enter port for L1 endpoint (1 - Enter Custom Port, 2 - Port is Default or using external service) > "
-read select_stark_rpc_port
+sleep 5
+
+# SET CONNECTION INTERFACE
+echo "select connection interface for L1 endpoiont"
+echo "if using Juno client you must select ws, if using Pathfinder client you can use http or ws"
+echo -n "enter connection interface for L1 endpoiont, if using Juno select 1 (1 - ws , 2 - http) > "
+read select_interface
 echo
-if test "$select_stark_rpc_port" == "1"
+if test "$select_interface" == "1"
 then
-    read -p "Enter custom L1 Port: " STARK_RPC_PORT
-    echo "export STARK_RPC_PORT=$STARK_RPC_PORT" >> $HOME/.bash_profile
+    ENDPOINT_TYPE=$"ws"
+    echo "export ENDPOINT_TYPE=$ENDPOINT_TYPE" >> $HOME/.bash_profile
     source $HOME/.bash_profile
 fi
-if test "$select_stark_rpc_port" == "2"
+
+if test "$select_interface" == "2"
 then
-    STARK_RPC_PORT=$"8545"
-    echo "export STARK_RPC_PORT=$STARK_RPC_PORT" >> $HOME/.bash_profile
+    ENDPOINT_TYPE=$"http"
+    echo "export ENDPOINT_TYPE=$ENDPOINT_TYPE" >> $HOME/.bash_profile
+    source $HOME/.bash_profile
+fi
+
+# SET L1 PORT 
+echo " NOTE: default http port is (8545), and default ws port is (8546), if using sedge please check this as it may be different"
+echo "Is the PORT from L1 endpoint default or has it been changed (custom)?" 
+echo -n "enter port for L1 endpoint (1 - Enter Custom Port, 2 - Port is Default or using external service) > "
+read select_endpoint_port
+echo
+if test "$select_endpoint_port" == "1"
+then
+    read -p "Enter custom L1 Port: " ENDPOINT_PORT
+    echo "export ENDPOINT_PORT=$ENDPOINT_PORT" >> $HOME/.bash_profile
+    source $HOME/.bash_profile
+fi
+if test "$select_endpoint_port" == "2"
+then
+    if [ "$ENDPOINT_TYPE" == "http" ]
+    then
+        ENDPOINT_PORT=$"8545"
+    else
+        ENDPOINT_PORT=$"8546"
+    fi
+    echo "export ENDPOINT_PORT=$ENDPOINT_PORT" >> $HOME/.bash_profile
     source $HOME/.bash_profile
 fi 
+
 
 # SET L1 URL
 # echo "NOTE: currently pathfinder requires connection to a full archive node to sync"
 echo "NOTE: is using juno client, then use the websocket endpoint ws"
 echo -n "enter URL of L1 node or L1 node is hosted locally on the same device (1 - enter custom URL, 2 - L1 endpoint is hosted locally) > "
-read select_stark_rpc_url
+read select_endpoint_url
 echo
-if test "$select_stark_rpc_url" == "1"
+if test "$select_endpoint_url" == "1"
 then
-    read -p "Enter L1 URL, the full URL including port if provided: " STARK_RPC_URL
-    echo "export STARK_RPC_URL=$STARK_RPC_URL" >> $HOME/.bash_profile
+    read -p "Enter L1 URL, the full URL including port if provided: " ENDPOINT_URL
+    echo "export ENDPOINT_URL=$ENDPOINT_URL" >> $HOME/.bash_profile
     source $HOME/.bash_profile
 fi
-if test "$select_stark_rpc_url" == "2"
+if test "$select_endpoint_url" == "2"
 then
-    STARK_RPC_URL=$"http://localhost:$STARK_RPC_PORT"
-    echo "export STARK_RPC_URL=$STARK_RPC_URL" >> $HOME/.bash_profile
+    ENDPOINT_URL=$"$ENDPOINT_TYPE://localhost:$ENDPOINT_PORT"
+    echo "export ENDPOINT_URL=$ENDPOINT_URL" >> $HOME/.bash_profile
     source $HOME/.bash_profile
 fi
 
@@ -114,6 +143,7 @@ services:
         user: 1000:1000
         restart: always
         stop_grace_period: 30s
+        network_mode: "host"
         volumes:
             - ${HOMEDIR}/starknet-node/data:/usr/share/pathfinder/data
         ports:
@@ -139,10 +169,11 @@ elif [ "$CLIENT" == "juno" ]; then
 version: '3.3'
 services:
     starknet-node:
-        image: 'nethermindeth/juno:v0.4.0'
+        image: 'nethermind/juno:v0.4.1'
         user: 1000:1000
         restart: always
         stop_grace_period: 30s
+        network_mode: "host"
         volumes:
             - ${HOMEDIR}/starknet-node/data:/var/lib/juno
         ports:
