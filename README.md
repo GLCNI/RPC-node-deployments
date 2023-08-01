@@ -92,7 +92,7 @@ Run Setup:
 ## StarkNet
 
 ### Pathfinder / Juno clients
-Notes: currently it looks like both requires connection to a full archival node
+Notes: Currently it looks like Pathfinder requires a connection to a full archival node, Juno works will default full node. 
 
 **Manual Setup:** https://mirror.xyz/0xf3bF9DDbA413825E5DdF92D15b09C2AbD8d190dd/lpKUpNTbRHgqFV28My563Hgohe0trtdqaAvpozILx1s
 
