@@ -157,7 +157,16 @@ Juno network node setup with cosmovisor to manage chain upgrades, setup as a sys
 **Manual Setup:** https://mirror.xyz/0xf3bF9DDbA413825E5DdF92D15b09C2AbD8d190dd/U4aUf8jjYvO7QKEjwyXC_ndpeSGCZWFnrR3q48-Yh7w
 
 **Install Script:**
-PENDING
+
+Download and make executable:
+```
+wget https://raw.githubusercontent.com/GLCNI/RPC-node-deployments/main/juno.sh && chmod a+x juno.sh
+```
+
+Run Setup:
+```
+./juno.sh
+```
 
 ---------------
 
