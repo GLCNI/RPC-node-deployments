@@ -45,7 +45,7 @@ echo "export NODENAME=$NODENAME" >> "$HOME/.bashrc"
 git clone https://github.com/CosmosContracts/juno
 cd juno
 git fetch
-git checkout v15.0.0
+git checkout v16.0.0
 make install
 
 ######################
@@ -68,6 +68,9 @@ mv juno-phoenix2-genesis.json $HOME/.juno/config/genesis.json
 CHAIN_REPO="https://raw.githubusercontent.com/CosmosContracts/mainnet/main/juno-1"
 export SEEDS="$(curl -sL "$CHAIN_REPO/seeds.txt")"
 sed -i.bak -e "s/^seeds *=.*/seeds = \"$SEEDS\"/" ~/.juno/config/config.toml
+
+# Set min gas prices
+sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025ujuno,0.001ibc\/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9\"/" ~/.juno/config/app.toml
 
 # get addrbook
 
@@ -113,14 +116,14 @@ fi
 
 cd
 mkdir -p ~/.juno/cosmovisor/genesis/bin
-mkdir -p ~/.juno/cosmovisor/upgrades/v15/bin
+mkdir -p ~/.juno/cosmovisor/upgrades/v16/bin
 
 #install cosmovisor
 go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@latest
 
 #copy binary to cosmovisor
 cp $GOPATH/bin/junod ~/.juno/cosmovisor/genesis/bin
-cp $GOPATH/bin/junod ~/.juno/cosmovisor/upgrades/v15/bin/
+cp $GOPATH/bin/junod ~/.juno/cosmovisor/upgrades/v16/bin/
 
 
 #########################
