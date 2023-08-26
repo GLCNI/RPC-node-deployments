@@ -240,7 +240,8 @@ From another server run the command:
 curl https://juno.<DOMAIN-NAME>.io:443/status | jq .result.sync_info.catching_up
 ```
 This should return true or false (whether your node is synced or not) but proves that it is externally reachable through the sub-domain URL.
-![image](https://github.com/GLCNI/RPC-node-deployments/assets/67609618/20b9b7ac-c90c-458b-b623-5eb7bdd97584)
+![image](https://github.com/GLCNI/RPC-node-deployments/assets/67609618/f506b9cf-0dd2-48cc-a3e6-75cf92cae74b)
+
 
 
 NOTE: this query command is specific to ‘Juno’ node, you should be able to omit the last part and test if the node is reachable or adjust the query to a suitable API for your node.
