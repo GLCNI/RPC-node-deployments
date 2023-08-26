@@ -25,7 +25,7 @@ Storage is the likely the most important factor when it comes to Hardware, the r
 Must be high grade performant SSDs, however the cost difference is marginal its best to utilize PCIe M2 slots for NVMe if you have them, as the performance vs cost makes more sense.
 
 Recommended Makes and Models [Here]( https://gist.github.com/yorickdowne/f3a3e79a573bf35767cd002cc977b038)
-_This is for Ethereum Mainnet but is a good reference for reliable brands and models that perform well._
+_(This is for Ethereum Mainnet but is a good reference for reliable brands and models that perform well)_
 
 ### RAM:
 is a high-speed, short-term storage, applications need space in RAM to operate therefore simultaneous applications will require more RAM space.
@@ -65,7 +65,7 @@ Most node applications are built around Linux distribution Ubuntu 20.04 LTS
 
 **Step 1: Crete Bootable USB for Ubuntu OS**
 
-Download the ISO image for [Ubuntu 20.04 LTS]( [https://www.releases.ubuntu.com/focal/](https://www.releases.ubuntu.com/focal/))
+Download the ISO image for [Ubuntu 20.04 LTS](https://www.releases.ubuntu.com/focal)
 
 This image must be flashed to a USB using software designed to write OS images to USB drives so they are bootable, such applications are [Balena Etcher]( https://etcher.balena.io/)
 
