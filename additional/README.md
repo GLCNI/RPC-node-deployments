@@ -6,16 +6,16 @@ Such as hardware setup/ installing Linux /networks/ security considerations.
 
 ----
 
-[**Hardware Selection:**](https://github.com/GLCNI/RPC-node-deployments/tree/main/additional#hardware-selection) general hardware specifications and recommendations
+[**Hardware Selection:**](https://github.com/GLCNI/RPC-node-deployments/tree/main/additional#hardware-selection) general hardware specifications and recommendations\  
 [**Installing Linux:**](https://github.com/GLCNI/RPC-node-deployments/tree/main/additional#installing-linux) How to install Ubuntu 20.04LTS Locally 
 
-[**ssh:**](https://github.com/GLCNI/RPC-node-deployments/blob/main/additional/ssh.md) how to setup ssh to local devices for remote entry
-[**fix local ip:**](https://github.com/GLCNI/RPC-node-deployments/blob/main/additional/fix_local_ip.md) make private/local IP fixed to keep port forwarding rules
-[**mount additional drives:**](https://github.com/GLCNI/RPC-node-deployments/blob/main/additional/mount_additional_drives.md) add extra storage for running extra services/nodes
+[**ssh:**](https://github.com/GLCNI/RPC-node-deployments/blob/main/additional/ssh.md) how to setup ssh to local devices for remote entry\  
+[**fix local ip:**](https://github.com/GLCNI/RPC-node-deployments/blob/main/additional/fix_local_ip.md) make private/local IP fixed to keep port forwarding rules\  
+[**mount additional drives:**](https://github.com/GLCNI/RPC-node-deployments/blob/main/additional/mount_additional_drives.md) add extra storage for running extra services/nodes\  
 [**swap space:**](https://github.com/GLCNI/RPC-node-deployments/blob/main/additional/swap_space.md) to configure SSD space as extra RAM buffer
 
-**sub-domains:** configure domain routing for external access to mask IP addresses
-for setting up with docker services see [**traefik**](https://github.com/GLCNI/RPC-node-deployments/blob/main/additional/sub_domains_traefik.md)
+**sub-domains:** configure domain routing for external access to mask IP addresses\  
+for setting up with docker services see [**traefik**](https://github.com/GLCNI/RPC-node-deployments/blob/main/additional/sub_domains_traefik.md)\  
 for setting up with services running with systemD see [**nginx**](https://github.com/GLCNI/RPC-node-deployments/blob/main/additional/sub_domains_nginx.md)
 
 **Monitoring:** PENDING
