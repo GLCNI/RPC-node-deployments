@@ -263,6 +263,7 @@ server {
 
     location / {
         proxy_pass http://127.0.0.1:2221; # Assuming the provider node is listening on port 2221
+        grpc_pass 127.0.0.1:2221;
     }
 }
 ```
