@@ -156,7 +156,7 @@ Juno network node setup with cosmovisor to manage chain upgrades, setup as a sys
 
 **Manual Setup:** https://mirror.xyz/0xf3bF9DDbA413825E5DdF92D15b09C2AbD8d190dd/U4aUf8jjYvO7QKEjwyXC_ndpeSGCZWFnrR3q48-Yh7w
 
-**Install Script:**
+**Install Script:** 
 
 Download and make executable:
 ```
@@ -167,6 +167,11 @@ Run Setup:
 ```
 ./juno.sh
 ```
+
+## Axelar
+Axelar network node setup with cosmovisor to manage chain upgrades, setup as a system service.
+
+**Manual Setup:** https://mirror.xyz/0xf3bF9DDbA413825E5DdF92D15b09C2AbD8d190dd/DU-z5s18yuNWJ9LAXbINT3bI_1WYQ5P-kSe-yejARog
 
 ---------------
 
