@@ -61,9 +61,15 @@ sudo systemctl restart ssh
 
 Download and install [PuTTYgen](https://putty.org/) on your local machine.
 
-Open PuTTYgen and click on Load. Navigate to the location of the id_rsa private key you transferred from the server and open it.
+~~ Open PuTTYgen and click on Load. Navigate to the location of the id_rsa private key you transferred from the server and open it.~~ 
+~~ Click on Save private key to save the private key in a format that PuTTY can use (.ppk).~~ 
 
-Click on Save private key to save the private key in a format that PuTTY can use (.ppk).
+Edit the file name extension, change to `.ppk` now right click and click `Edit with PuTTYgen` 
+
+Head down to 'Parameters' and make sure the number of bits is correct
+![image](https://github.com/GLCNI/RPC-node-deployments/assets/67609618/ae56dbfd-0371-4bf8-a0ac-0f56185d8601)
+
+Once correct, click `Save private key` to save this key in its working format
 
 When connecting with PuTTY, under the Connection > SSH > Auth section, browse and select the .ppk private key file you just saved.
 
