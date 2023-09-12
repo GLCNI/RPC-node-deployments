@@ -61,7 +61,7 @@ sudo systemctl restart ssh
 
 Download and install [PuTTYgen](https://putty.org/) on your local machine.
 
-~~ Open PuTTYgen and click on Load. Navigate to the location of the id_rsa private key you transferred from the server and open it.
+~~Open PuTTYgen and click on Load. Navigate to the location of the id_rsa private key you transferred from the server and open it.
 Click on Save private key to save the private key in a format that PuTTY can use (.ppk).~~ 
 
 Edit the file name extension, change to `.ppk` now right click and click `Edit with PuTTYgen` 
