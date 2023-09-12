@@ -51,9 +51,8 @@ AuthorizedKeysFile	.ssh/authorized_keys .ssh/authorized_keys2
 PasswordAuthentication no
 ```
 
-4. 
 
-Restart SSH
+**Restart SSH**
 ```
 sudo systemctl restart ssh
 ```
