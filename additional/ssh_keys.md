@@ -31,10 +31,27 @@ Open the SSH Config
 sudo nano /etc/ssh/sshd_config
 ```
 
-Edit the following line
+Edit the following:
+
+1. Uncomment, to allow system to listen over <disired port> on any IP address 
+```
+ListenAddress 0.0.0.0.
+```
+
+2. Uncomment the following to allow PubKey pair authentication
+```
+PubkeyAuthentication yes
+
+# Expect .ssh/authorized_keys2 to be disregarded by default in future.
+AuthorizedKeysFile	.ssh/authorized_keys .ssh/authorized_keys2
+```
+
+3. Disable normal password authentication, Uncomment the line `#PasswordAuthentication yes` and modify to 
 ```
 PasswordAuthentication no
 ```
+
+4. 
 
 Restart SSH
 ```
