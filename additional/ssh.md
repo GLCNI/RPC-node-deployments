@@ -62,6 +62,8 @@ Should you want to connect externally outside your local network.
 
 **Creating SSH Keys**
 
+[How to Setup SSH Keys here:](https://github.com/GLCNI/RPC-node-deployments/blob/main/additional/ssh_keys.md)
+
 [https://docs.rocketpool.net/guides/node/securing-your-node.html#essential-secure-your-ssh-access](https://docs.rocketpool.net/guides/node/securing-your-node.html#essential-secure-your-ssh-access)
 
 **Fail2Ban**
