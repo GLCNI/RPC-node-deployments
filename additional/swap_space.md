@@ -12,6 +12,26 @@ Depending on storage used you can choose to configure 16GB or 32GB and set swapp
 
 ```
 sudo fallocate -l 16G /swapfile
+```
+
+-------
+Warning: If you get an error like this `fallocate: fallocate failed: Text file busy` it means a swapfile exists and is in use, you can confirm this with `sudo swapon --show` to see how much storage it is already configured for (I’ve noticed Ubuntu generally has swap already configured and for 2GB)
+
+If so:
+
+Remove swap file
+```
+sudo swapoff /swapfile
+```
+
+Recreate Swap File
+```
+sudo fallocate -l 16G /swapfile
+```
+-------
+
+
+```
 sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
@@ -27,6 +47,14 @@ add the following to the file
 ```
 /swapfile none swap sw 0 0
 ```
+*NOTE: if this is already here, then no change is needed*
+
+**Check Swap File:**
+```
+sudo swapon –show
+```
+This should return the value set in `swapfile`, ex: 16GB
+
 
 **Set swappiness Value**
 
