@@ -51,7 +51,7 @@ add the following to the file
 
 **Check Swap File:**
 ```
-sudo swapon –show
+sudo swapon --show
 ```
 This should return the value set in `swapfile`, ex: 16GB
 
