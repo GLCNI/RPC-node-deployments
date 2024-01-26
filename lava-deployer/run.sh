@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Define paths to scripts
-LAVA_NODE_SETUP_SCRIPT="$HOME/lava-deployer/full_node_templates/lava_node_setup.sh"
-COSMOS_NODE_SETUP_SCRIPT="$HOME/lava-deployer/full_node_templates/cosmos.sh"
-OSMOSIS_NODE_SETUP_SCRIPT="$HOME/lava-deployer/full_node_templates/osmosis.sh"
-JUNO_NODE_SETUP_SCRIPT="$HOME/lava-deployer/full_node_templates/juno.sh"
-ARBITRUM_NODE_SETUP_SCRIPT="$HOME/lava-deployer/full_node_templates/arbitrum.sh"
-NGINX_SETUP_SCRIPT="$HOME/lava-deployer/nginx_setup.sh"
-PROVIDER_SETUP_SCRIPT="$HOME/lava-deployer/provider_setup.sh"
+LAVA_NODE_SETUP_SCRIPT="$HOME/RPC-node-deployments/lava-deployer/full_node_templates/lava_node_setup.sh"
+COSMOS_NODE_SETUP_SCRIPT="$HOME/RPC-node-deployments/lava-deployer/full_node_templates/cosmos.sh"
+OSMOSIS_NODE_SETUP_SCRIPT="$HOME/RPC-node-deployments/lava-deployer/full_node_templates/osmosis.sh"
+JUNO_NODE_SETUP_SCRIPT="$HOME/RPC-node-deployments/lava-deployer/full_node_templates/juno.sh"
+ARBITRUM_NODE_SETUP_SCRIPT="$HOME/RPC-node-deployments/lava-deployer/full_node_templates/arbitrum.sh"
+NGINX_SETUP_SCRIPT="$HOME/RPC-node-deployments/lava-deployer/nginx_setup.sh"
+PROVIDER_SETUP_SCRIPT="$HOME/RPC-node-deployments/lava-deployer/provider_setup.sh"
 
 # Function to display the main menu
 main_menu() {
