@@ -46,6 +46,8 @@ deploy_full_node() {
         4) bash "$ARBITRUM_NODE_SETUP_SCRIPT" ;;
     esac
 
+    source "$HOME/.bashrc"
+
     # After deployment, offer to setup NGINX
     if (whiptail --title "Setup NGINX" --yesno "Do you want to setup NGINX now?" 8 78); then
         setup_nginx
@@ -56,12 +58,18 @@ deploy_full_node() {
 setup_nginx() {
     echo "Setting up NGINX..."
     bash "$NGINX_SETUP_SCRIPT"
+
+    source "$HOME/.bashrc"
+
 }
 
 # Function to start provider process
 start_provider_process() {
     echo "Starting Provider process..."
     bash "$PROVIDER_SETUP_SCRIPT"
+
+    source "$HOME/.bashrc"
+
 }
 
 # Call the main menu function
