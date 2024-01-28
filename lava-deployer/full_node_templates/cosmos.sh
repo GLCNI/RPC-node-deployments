@@ -26,7 +26,7 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install git wget jq gcc build-essential ufw curl snapd make tar clang pkg-config libssl-dev gzip -y
 
 #install go
-wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.21.1
+wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.20
 
 # Set GOROOT and GOPATH, update PATH
 export GOROOT=$HOME/.go
@@ -112,7 +112,7 @@ sudo apt-get update -y
 sudo apt-get install liblz4-tool aria2 -y
 
 cd ~/.gaia/
-SNAPURL=`curl -L https://quicksync.io/cosmos.json|jq -r '.[] |select(.file=="cosmoshub-4-prunned")|.url'`
+SNAPURL=`curl -L https://quicksync.io/cosmos.json|jq -r '.[] |select(.file=="cosmoshub-4-pruned")|.url'`
 wget -O - $SNAPURL | lz4 -d | tar -xvf -
 
 #Please use pruning = default when using pruned snapshots, it will most like break if you use pruning = everything
