@@ -28,11 +28,13 @@ main_menu() {
 # Function to deploy a Lava Full Node
 deploy_lava_node() {
     echo "Deploying Lava Full Node..."
+    source "$HOME/.bashrc"
     bash "$LAVA_NODE_SETUP_SCRIPT"
 }
 
 # Function to deploy a Full Node
 deploy_full_node() {
+    source "$HOME/.bashrc"
     NODE=$(whiptail --title "Select Node to Deploy" --menu "Choose a node" 25 78 10 \
     "1" "Cosmos" \
     "2" "Osmosis" \
@@ -57,19 +59,15 @@ deploy_full_node() {
 # Function to setup NGINX
 setup_nginx() {
     echo "Setting up NGINX..."
-    bash "$NGINX_SETUP_SCRIPT"
-
     source "$HOME/.bashrc"
-
+    bash "$NGINX_SETUP_SCRIPT"
 }
 
 # Function to start provider process
 start_provider_process() {
     echo "Starting Provider process..."
-    bash "$PROVIDER_SETUP_SCRIPT"
-
     source "$HOME/.bashrc"
-
+    bash "$PROVIDER_SETUP_SCRIPT"
 }
 
 # Call the main menu function
