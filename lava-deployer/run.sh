@@ -6,6 +6,7 @@ COSMOS_NODE_SETUP_SCRIPT="$HOME/RPC-node-deployments/lava-deployer/full_node_tem
 OSMOSIS_NODE_SETUP_SCRIPT="$HOME/RPC-node-deployments/lava-deployer/full_node_templates/osmosis.sh"
 JUNO_NODE_SETUP_SCRIPT="$HOME/RPC-node-deployments/lava-deployer/full_node_templates/juno.sh"
 ARBITRUM_NODE_SETUP_SCRIPT="$HOME/RPC-node-deployments/lava-deployer/full_node_templates/arbitrum.sh"
+STARKNET_NODE_SETUP_SCRIPT="$HOME/RPC-node-deployments/lava-deployer/full_node_templates/starknet.sh"
 NGINX_SETUP_SCRIPT="$HOME/RPC-node-deployments/lava-deployer/nginx_setup.sh"
 PROVIDER_SETUP_SCRIPT="$HOME/RPC-node-deployments/lava-deployer/provider_setup.sh"
 
@@ -38,13 +39,13 @@ deploy_full_node() {
     NODE=$(whiptail --title "Select Node to Deploy" --menu "Choose a node" 25 78 10 \
     "1" "Cosmos" \
     "2" "Osmosis" \
-    "3" "Juno" \
+    "3" "StarkNet" \
     "4" "Arbitrum" 3>&1 1>&2 2>&3)
 
     case $NODE in
         1) bash "$COSMOS_NODE_SETUP_SCRIPT" ;;
         2) bash "$OSMOSIS_NODE_SETUP_SCRIPT" ;;
-        3) bash "$JUNO_NODE_SETUP_SCRIPT" ;;
+        3) bash "$STARKNET_NODE_SETUP_SCRIPT" ;;
         4) bash "$ARBITRUM_NODE_SETUP_SCRIPT" ;;
     esac
 
