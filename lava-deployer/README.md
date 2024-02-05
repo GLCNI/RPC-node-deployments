@@ -14,6 +14,8 @@ interactive setup to guide all setup steps including:
 **Supported nodes for Provider**
 - Osmosis
 - Cosmos
+- StarkNet
+- Arbitrum
 - (more added soon)
 
 **To Run:**
