@@ -69,7 +69,7 @@ source "$HOME/.bashrc"
 cd $HOME
 git clone https://github.com/lavanet/lava.git
 cd lava
-git checkout v0.33.0
+git checkout v0.34.0
 make install
 
 # LAVA CLI
@@ -273,14 +273,14 @@ EOF
 
         # create cosmovisor directories
         mkdir -p $HOME/.lava/cosmovisor/genesis/bin
-        mkdir -p $HOME/.lava/cosmovisor/upgrades/v0.33.0/bin
+        mkdir -p $HOME/.lava/cosmovisor/upgrades/v0.34.0/bin
 
         # install cosmovisor
         go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@latest
 
         # copy binaries to cosmovisor
         cp $GOPATH/bin/lavad $HOME/.lava/cosmovisor/genesis/bin
-        cp $GOPATH/bin/lavad $HOME/.lava/cosmovisor/upgrades/v0.33.0/bin/
+        cp $GOPATH/bin/lavad $HOME/.lava/cosmovisor/upgrades/v0.34.0/bin/
 
         # setup system service
         sudo tee /etc/systemd/system/cosmovisor.service > /dev/null <<EOF
