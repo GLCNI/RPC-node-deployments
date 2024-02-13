@@ -65,7 +65,7 @@ echo "export NODENAME=$NODENAME" >> "$HOME/.bashrc"
 cd $HOME
 git clone https://github.com/osmosis-labs/osmosis
 cd osmosis
-git checkout v22.0.0
+git checkout v22.0.3
 make install
 
 ######################
@@ -87,14 +87,14 @@ curl -Ls https://dl2.quicksync.io/json/addrbook.osmosis.json > $HOME/.osmosisd/c
 
 cd
 mkdir -p ~/.osmosisd/cosmovisor/genesis/bin
-mkdir -p ~/.osmosisd/cosmovisor/upgrades/v22/bin
+mkdir -p ~/.osmosisd/cosmovisor/upgrades/v22.0.3/bin
 
 #install cosmovisor
 go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@latest
 
 #copy binary to cosmovisor
 cp $GOPATH/bin/osmosisd ~/.osmosisd/cosmovisor/genesis/bin
-cp $GOPATH/bin/osmosisd ~/.osmosisd/cosmovisor/upgrades/v22/bin/
+cp $GOPATH/bin/osmosisd ~/.osmosisd/cosmovisor/upgrades/v22.0.3/bin/
 
 #########################
 ##### snapshot data 
@@ -175,4 +175,33 @@ sed -i '/\[grpc\]/,/^\[.*\]/{/enable =/s/=.*/= true/; /address =/s/=.*/= "tcp:\/
 sudo systemctl daemon-reload
 sudo systemctl restart cosmovisor
 
-echo "view logs with: journalctl -u cosmovisor -f"
+# confirm service is running
+if systemctl is-active --quiet cosmovisor.service; then
+    echo "Success"
+cat <<'EOF'
+   ____                          _       _   _           _      
+  / __ \                        (_)     | \ | |         | |     
+ | |  | |___ _ __ ___   ___  ___ _ ___  |  \| | ___   __| | ___ 
+ | |  | / __| '_ ` _ \ / _ \/ __| / __| | . ` |/ _ \ / _` |/ _ \
+ | |__| \__ \ | | | | | (_) \__ \ \__ \ | |\  | (_) | (_| |  __/
+  \____/|___/_| |_| |_|\___/|___/_|___/ |_| \_|\___/ \__,_|\___|
+          (_)                            (_)                    
+           _ ___   _ __ _   _ _ __  _ __  _ _ __   __ _         
+          | / __| | '__| | | | '_ \| '_ \| | '_ \ / _` |        
+          | \__ \ | |  | |_| | | | | | | | | | | | (_| |        
+          |_|___/ |_|   \__,_|_| |_|_| |_|_|_| |_|\__, |        
+                                                   __/ |        
+                                                  |___/  
+EOF
+    # Capture and print the Osmosis version
+    OSMOSIS_VERSION=$(osmosisd version 2>&1)
+    echo "Osmosis Version: $OSMOSIS_VERSION"
+    echo "Allow some time to catch up Sync, before proceeding to next steps"
+    echo "To display logs, use 'journalctl -u cosmovisor.service -f'"
+else
+    echo "Error: arbitrum-node may not be running correctly."
+fi
+
+# Press any key to continue
+read -n 1 -s -r -p "Press any key to continue"
+echo ""
